@@ -145,6 +145,27 @@ class linelogin {
         $response = $this->sendCURL($url, NULL, 'GET');
         return $response;
     }
+    
+    /*
+     *   function revoke
+     *   
+     *   Args:
+     *      $token - User access token.
+     * 
+     *   Returns:
+     *      $response (array) - Returns response array in json format.
+     */
+    function revoke($token) {
+        $header = ['Content-Type: application/x-www-form-urlencoded'];
+        $data = [
+            "access_token" => $token,
+            "client_id" => self::CLIENT_ID,
+            "client_secret" => self::CLIENT_SECRET
+        ];
+
+        $response = $this->sendCURL(self::TOKEN_URL, $header, 'POST', $data);
+        return $response;
+    }
 
     private function scope($scope) {
         $list = ['openid', 'profile', 'email'];
