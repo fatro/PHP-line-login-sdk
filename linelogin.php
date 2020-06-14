@@ -147,7 +147,7 @@ class linelogin {
     }
 
     private function scope($scope) {
-        $list = ['open_id', 'profile', 'email'];
+        $list = ['openid', 'profile', 'email'];
 
         $scope = decbin($scope);
 
